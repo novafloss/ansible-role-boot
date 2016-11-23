@@ -34,6 +34,8 @@
   delegate_to: '{{ item }}'
   when: item.split('.')[-1] == 'lxc'
   with_items: '{{ groups["all"] }}'
+  retries: 20
+  delay: 1
 
 - name: Install sudo in container
   apt:
@@ -43,3 +45,5 @@
   delegate_to: '{{ item }}'
   when: item.split('.')[-1] == 'lxc'
   with_items: '{{ groups["all"] }}'
+  retries: 20
+  delay: 1
